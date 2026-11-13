@@ -1,0 +1,186 @@
+#stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(63, 110, 196, 0.16), transparent 58%),
+    radial-gradient(rgba(173, 190, 230, 0.09) 1px, transparent 1.2px) 0 0 / 22px 22px,
+    var(--ink);
+}
+
+.map-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.map-svg:active {
+  cursor: grabbing;
+}
+
+.map-background {
+  fill: transparent;
+}
+
+.state {
+  stroke: var(--ink);
+  stroke-width: 1.1px;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.state:hover {
+  filter: brightness(1.18);
+  stroke: #ffffff;
+  stroke-width: 1.8px;
+}
+
+.state.selected {
+  stroke: #ffffff;
+  stroke-width: 2.6px;
+}
+
+.state-hatch {
+  pointer-events: none;
+  stroke: none;
+}
+
+.labels {
+  pointer-events: none;
+  font-family: var(--font-display);
+}
+
+.label {
+  font-size: 13px;
+  paint-order: stroke;
+  stroke-linejoin: round;
+}
+
+.label[data-tone='light'] {
+  stroke: rgba(8, 13, 26, 0.55);
+  stroke-width: 2.4px;
+}
+
+.label[data-tone='dark'] {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 2.4px;
+}
+
+.label-abbr {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.label-ev {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+#small-states {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  z-index: 900;
+  display: grid;
+  grid-template-columns: repeat(3, 46px);
+  gap: 5px;
+  padding: 10px;
+  transform: translateY(-62%);
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: right 0.3s ease;
+}
+
+.small-title {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.small-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0;
+  overflow: hidden;
+  color: white;
+  background: var(--tile, #333);
+  border: 1px solid rgba(8, 13, 26, 0.7);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  transition: transform 0.12s;
+}
+
+.small-tile.pending::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(10, 15, 30, 0.34) 0 2px, transparent 2px 7px);
+  pointer-events: none;
+}
+
+.small-tile:hover {
+  transform: translateY(-1px);
+  border-color: white;
+}
+
+.small-tile.selected {
+  border: 2px solid white;
+}
+
+.small-abbr {
+  position: relative;
+  z-index: 1;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.small-ev {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.zoom-controls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: right 0.3s ease;
+}
+
+.zoom-controls .btn-icon {
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+}
+
+body.sidebar-open .zoom-controls,
+body.sidebar-open #small-states {
+  right: calc(var(--sidebar-width) + 14px);
+}

@@ -1,0 +1,80 @@
+#ticker-bar {
+  position: relative;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: var(--ticker-height);
+  overflow: hidden;
+  background: #060a15;
+  border-top: 1px solid var(--line);
+}
+
+.ticker-label {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 18px 0 16px;
+  background: #e5384a;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.ticker-wrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+.ticker-content {
+  display: flex;
+  width: max-content;
+  padding-left: 20px;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker-content.still {
+  animation: none;
+}
+
+.ticker-item {
+  margin-right: 44px;
+  font-size: 14px;
+  color: #cbd5ea;
+}
+
+.ticker-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.ticker-name.gop {
+  color: #ff6b76;
+}
+
+.ticker-name.dem {
+  color: #6fa8f0;
+}
+
+.ticker-name.ind {
+  color: #c3a9ee;
+}
+
+.ticker-margin {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

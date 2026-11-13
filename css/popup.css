@@ -1,0 +1,259 @@
+#popup,
+#tooltip {
+  position: absolute;
+  z-index: 2500;
+  display: none;
+  color: white;
+  background: var(--panel-solid);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+}
+
+#popup.show,
+#tooltip.show {
+  display: block;
+}
+
+#tooltip {
+  z-index: 2400;
+  display: none;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+#tooltip.show {
+  display: flex;
+}
+
+#tooltip strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+#tooltip span {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+#popup {
+  width: 300px;
+  max-width: calc(100% - 16px);
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.popup-header {
+  position: relative;
+  padding: 14px 44px 14px 16px;
+  background: linear-gradient(135deg, rgba(173, 190, 230, 0.12), rgba(173, 190, 230, 0.03));
+  border-bottom: 1px solid var(--line);
+}
+
+.popup-header.gop {
+  background: linear-gradient(135deg, rgba(216, 67, 79, 0.42), rgba(143, 29, 44, 0.12));
+}
+
+.popup-header.dem {
+  background: linear-gradient(135deg, rgba(63, 130, 217, 0.42), rgba(23, 68, 143, 0.12));
+}
+
+.popup-header.ind {
+  background: linear-gradient(135deg, rgba(160, 122, 214, 0.42), rgba(90, 58, 150, 0.12));
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.popup-meta {
+  margin-top: 5px;
+  font-size: 13px;
+  color: rgba(238, 242, 251, 0.78);
+}
+
+.popup-status-pill {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  background: rgba(8, 13, 26, 0.55);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.popup-status-pill.called {
+  background: var(--good);
+  border-color: transparent;
+  color: #05231a;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.popup-close:hover {
+  opacity: 1;
+}
+
+.popup-body {
+  padding: 12px;
+}
+
+.candidate-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background: rgba(173, 190, 230, 0.05);
+  border: 1px solid transparent;
+  border-radius: 12px;
+}
+
+.candidate-row:last-child {
+  margin-bottom: 0;
+}
+
+.candidate-row.winner {
+  background: rgba(173, 190, 230, 0.1);
+  border-color: var(--line-strong);
+}
+
+.candidate-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.candidate-info strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.candidate-info small {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.candidate-track {
+  display: block;
+  height: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+  background: rgba(173, 190, 230, 0.12);
+  border-radius: 3px;
+}
+
+.candidate-fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.candidate-row.gop .candidate-fill {
+  background: var(--gop);
+}
+
+.candidate-row.dem .candidate-fill {
+  background: var(--dem);
+}
+
+.candidate-row.ind .candidate-fill {
+  background: var(--ind);
+}
+
+.candidate-share {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.popup-status {
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.triangle-container {
+  padding: 10px 14px 14px;
+  text-align: center;
+  background: rgba(173, 190, 230, 0.05);
+  border-top: 1px solid var(--line);
+}
+
+.triangle-container h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.triangle-chart {
+  display: block;
+  width: 190px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.triangle-shape {
+  fill: rgba(173, 190, 230, 0.05);
+  stroke: rgba(173, 190, 230, 0.4);
+  stroke-width: 1.2;
+}
+
+.triangle-guide {
+  stroke: rgba(173, 190, 230, 0.14);
+  stroke-width: 1;
+}
+
+.triangle-dot {
+  fill: #ffffff;
+  stroke: var(--panel-solid);
+  stroke-width: 2;
+}
+
+.triangle-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.triangle-label.gop {
+  fill: #ff6b76;
+}
+
+.triangle-label.dem {
+  fill: #6fa8f0;
+}
+
+.triangle-label.ind {
+  fill: #c3a9ee;
+}

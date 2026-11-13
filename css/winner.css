@@ -1,0 +1,40 @@
+#winner-banner {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 28px 12px;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #2fb67c, #1a8a5c);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: top 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#winner-banner[data-side='gop'] {
+  background: linear-gradient(135deg, var(--gop), var(--gop-deep));
+}
+
+#winner-banner[data-side='dem'] {
+  background: linear-gradient(135deg, var(--dem), var(--dem-deep));
+}
+
+#winner-banner[data-side='ind'] {
+  background: linear-gradient(135deg, var(--ind), #5a3a96);
+}
+
+#winner-banner.show {
+  top: 0;
+}
+
+#winner-banner .icon {
+  width: 24px;
+  height: 24px;
+}
