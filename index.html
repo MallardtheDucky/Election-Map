@@ -154,9 +154,17 @@
 
   </div>
 
+  <script>
+    window.addEventListener('error', function (e) {
+      var box = document.getElementById('loader-content');
+      if (!box || box.querySelector('.spinner') === null && box.children.length) return;
+      box.innerHTML = '<div class="loader-error-title">The map failed to start</div><div class="loader-error-detail"></div>';
+      box.querySelector('.loader-error-detail').textContent = (e.message || 'Script error') + (e.filename ? ' (' + e.filename.split('/').slice(-3).join('/') + ':' + e.lineno + ')' : '');
+    }, true);
+  </script>
   <script src="vendor/d3.min.js"></script>
   <script src="vendor/topojson-client.min.js"></script>
   <script src="vendor/confetti.browser.js"></script>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js?v=2"></script>
 </body>
 </html>
